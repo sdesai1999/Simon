@@ -205,7 +205,6 @@
 				TargetAttributes = {
 					852DEBD81D62CBD0004AAB7E = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = U6T5LVFU7R;
 					};
 					852DEBEC1D62CBD0004AAB7E = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -424,7 +423,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.SauravDesai.Simon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "89020450-bd2f-47e6-9749-f6f4003d8233";
 			};
 			name = Debug;
 		};
@@ -438,7 +437,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.SauravDesai.Simon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "89020450-bd2f-47e6-9749-f6f4003d8233";
 			};
 			name = Release;
 		};
