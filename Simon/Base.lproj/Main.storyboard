@@ -162,6 +162,9 @@
                                 <state key="normal" title="Reset">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="resetButtonTapped:" destination="WKF-nK-VTG" eventType="touchUpInside" id="uIg-wg-MPS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e78-iX-LEa">
                                 <rect key="frame" x="520" y="547" width="60" height="33"/>
