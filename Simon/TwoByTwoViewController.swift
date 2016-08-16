@@ -196,6 +196,18 @@ class TwoByTwoViewController: UIViewController {
         self.reset()
     }
     
+    @IBAction func finishButtonTapped(sender: UIButton) {
+        timer.invalidate()
+        if scoreCount > highScoreCount{
+            highScoreCount = scoreCount
+            highScoreLabel.text = "High Score: \(highScoreCount)"
+            defaults.setInteger(highScoreCount, forKey: "highScore")
+        }
+        scoreCount = 0
+        scoreLabel.text = "Score: \(scoreCount)"
+        self.performSegueWithIdentifier("2x2ToHomeScreen", sender: self)
+    }
+    
 }
 
 

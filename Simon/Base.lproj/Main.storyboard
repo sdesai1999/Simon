@@ -177,6 +177,9 @@
                                 <state key="normal" title="Finish">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="finishButtonTapped:" destination="WKF-nK-VTG" eventType="touchUpInside" id="e16-f7-4Mv"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1E-b0-Yaj">
                                 <rect key="frame" x="20" y="28" width="149" height="24"/>
@@ -222,6 +225,7 @@
                         <outletCollection property="squareViews" destination="zVv-CF-zmN" collectionClass="NSMutableArray" id="5hq-39-VLk"/>
                         <outletCollection property="squareViews" destination="G7o-Sv-q13" collectionClass="NSMutableArray" id="D7j-p9-MEG"/>
                         <outletCollection property="squareViews" destination="Tdj-XU-Xxy" collectionClass="NSMutableArray" id="ijP-HI-DEv"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="2x2ToHomeScreen" id="2GT-Zd-aqn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WDn-ej-6sE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -332,4 +336,7 @@
             <point key="canvasLocation" x="-107" y="1073"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="2GT-Zd-aqn"/>
+    </inferredMetricsTieBreakers>
 </document>
