@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum Color{
+enum Color{ // 4 colors for the uiviews
     case Yellow
     case Blue
     case Red
@@ -26,7 +26,7 @@ enum Color{
 }
 
 class TwoByTwoViewController: UIViewController {
-
+    
     @IBOutlet var squareViews: [UIView]!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var finishButton: UIButton!
@@ -41,7 +41,10 @@ class TwoByTwoViewController: UIViewController {
     var tapRecognizer3: UITapGestureRecognizer = UITapGestureRecognizer()
     var currentPattern: [Color] = []
     var timer: NSTimer = NSTimer()
-    var squareToLightUp: UIView? = UIView()
+    var squareToLightUp: UIView = UIView()
+    var hasNotDied: Bool = true
+    var currentSquare: Int = 0
+    var usersPattern: [Color] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +58,7 @@ class TwoByTwoViewController: UIViewController {
         finishButton.layer.cornerRadius = 7
         finishButton.clipsToBounds = true
         self.addToPattern()
-        self.displayPattern()
+        self.setUpTimer()
     }
     
     func addToPattern(){
@@ -63,31 +66,37 @@ class TwoByTwoViewController: UIViewController {
         currentPattern.append(colorToAdd)
     }
     
-    func displayPattern(){
-        for current in currentPattern{
-            switch current{
+    func flashSquare(){
+        if currentSquare == currentPattern.count{
+            timer.invalidate()
+            currentSquare = 0
+        }else{
+            switch currentPattern[currentSquare]{
             case .Yellow:
                 squareToLightUp = squareViews[0]
-                squareToLightUp!.alpha = 1
+                squareToLightUp.alpha = 1
             case .Blue:
                 squareToLightUp = squareViews[1]
-                squareToLightUp!.alpha = 1
+                squareToLightUp.alpha = 1
             case .Red:
                 squareToLightUp = squareViews[2]
-                squareToLightUp!.alpha = 1
+                squareToLightUp.alpha = 1
             case .Green:
                 squareToLightUp = squareViews[3]
-                squareToLightUp!.alpha = 1
+                squareToLightUp.alpha = 1
             }
-            timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(TwoByTwoViewController.dimSquare), userInfo: nil, repeats: false)
+            let triggerTime = (Int64(NSEC_PER_SEC) * 1)
+            currentSquare += 1
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
+                self.squareToLightUp.alpha = 0.15
+            })
         }
     }
     
-    func dimSquare(){
-        squareToLightUp!.alpha = 0.15
-        squareToLightUp = nil
+    func setUpTimer(){
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(TwoByTwoViewController.flashSquare), userInfo: nil, repeats: true)
     }
-
+    
 }
 
 
