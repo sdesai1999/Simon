@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		852DEBDD1D62CBD0004AAB7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852DEBDC1D62CBD0004AAB7E /* AppDelegate.swift */; };
-		852DEBDF1D62CBD0004AAB7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852DEBDE1D62CBD0004AAB7E /* ViewController.swift */; };
+		852DEBDF1D62CBD0004AAB7E /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852DEBDE1D62CBD0004AAB7E /* InitialViewController.swift */; };
 		852DEBE21D62CBD0004AAB7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 852DEBE01D62CBD0004AAB7E /* Main.storyboard */; };
 		852DEBE41D62CBD0004AAB7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 852DEBE31D62CBD0004AAB7E /* Assets.xcassets */; };
 		852DEBE71D62CBD0004AAB7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 852DEBE51D62CBD0004AAB7E /* LaunchScreen.storyboard */; };
 		852DEBF21D62CBD0004AAB7E /* SimonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852DEBF11D62CBD0004AAB7E /* SimonTests.swift */; };
 		852DEBFD1D62CBD0004AAB7E /* SimonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852DEBFC1D62CBD0004AAB7E /* SimonUITests.swift */; };
+		852DEC0B1D62DC00004AAB7E /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852DEC0A1D62DC00004AAB7E /* InstructionViewController.swift */; };
+		852DEC111D62E443004AAB7E /* TwoByTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852DEC101D62E443004AAB7E /* TwoByTwoViewController.swift */; };
+		852DEC131D62E450004AAB7E /* ThreeByThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852DEC121D62E450004AAB7E /* ThreeByThreeViewController.swift */; };
+		852DEC151D62E477004AAB7E /* FourByFourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852DEC141D62E477004AAB7E /* FourByFourViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +40,7 @@
 /* Begin PBXFileReference section */
 		852DEBD91D62CBD0004AAB7E /* Simon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		852DEBDC1D62CBD0004AAB7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		852DEBDE1D62CBD0004AAB7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		852DEBDE1D62CBD0004AAB7E /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		852DEBE11D62CBD0004AAB7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		852DEBE31D62CBD0004AAB7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		852DEBE61D62CBD0004AAB7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +51,10 @@
 		852DEBF81D62CBD0004AAB7E /* SimonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		852DEBFC1D62CBD0004AAB7E /* SimonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimonUITests.swift; sourceTree = "<group>"; };
 		852DEBFE1D62CBD0004AAB7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		852DEC0A1D62DC00004AAB7E /* InstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
+		852DEC101D62E443004AAB7E /* TwoByTwoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoByTwoViewController.swift; sourceTree = "<group>"; };
+		852DEC121D62E450004AAB7E /* ThreeByThreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeByThreeViewController.swift; sourceTree = "<group>"; };
+		852DEC141D62E477004AAB7E /* FourByFourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourByFourViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +106,11 @@
 			isa = PBXGroup;
 			children = (
 				852DEBDC1D62CBD0004AAB7E /* AppDelegate.swift */,
-				852DEBDE1D62CBD0004AAB7E /* ViewController.swift */,
+				852DEC0A1D62DC00004AAB7E /* InstructionViewController.swift */,
+				852DEBDE1D62CBD0004AAB7E /* InitialViewController.swift */,
+				852DEC101D62E443004AAB7E /* TwoByTwoViewController.swift */,
+				852DEC121D62E450004AAB7E /* ThreeByThreeViewController.swift */,
+				852DEC141D62E477004AAB7E /* FourByFourViewController.swift */,
 				852DEBE01D62CBD0004AAB7E /* Main.storyboard */,
 				852DEBE31D62CBD0004AAB7E /* Assets.xcassets */,
 				852DEBE51D62CBD0004AAB7E /* LaunchScreen.storyboard */,
@@ -256,7 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				852DEBDF1D62CBD0004AAB7E /* ViewController.swift in Sources */,
+				852DEC0B1D62DC00004AAB7E /* InstructionViewController.swift in Sources */,
+				852DEC131D62E450004AAB7E /* ThreeByThreeViewController.swift in Sources */,
+				852DEC111D62E443004AAB7E /* TwoByTwoViewController.swift in Sources */,
+				852DEC151D62E477004AAB7E /* FourByFourViewController.swift in Sources */,
+				852DEBDF1D62CBD0004AAB7E /* InitialViewController.swift in Sources */,
 				852DEBDD1D62CBD0004AAB7E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
