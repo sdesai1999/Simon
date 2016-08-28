@@ -12,7 +12,6 @@ class InitialViewController: UIViewController {
 
     @IBOutlet weak var twoByTwoButton: UIButton!
     @IBOutlet weak var threeByThreeButton: UIButton!
-    @IBOutlet weak var fourByFourButton: UIButton!
     @IBOutlet weak var infoButton: UIButton!
     
     override func viewDidLoad(){
@@ -22,8 +21,6 @@ class InitialViewController: UIViewController {
         twoByTwoButton.clipsToBounds = true
         threeByThreeButton.layer.cornerRadius = 20
         threeByThreeButton.clipsToBounds = true
-        fourByFourButton.layer.cornerRadius = 20
-        fourByFourButton.clipsToBounds = true
         infoButton.layer.cornerRadius = 0.5 * infoButton.bounds.size.width
         infoButton.clipsToBounds = true
     }

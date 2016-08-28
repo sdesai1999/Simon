@@ -7,40 +7,42 @@
 //
 
 import UIKit
-
-enum Color { // 4 colors for the uiviews
-    case Yellow
-    case Blue
-    case Red
-    case Green
-    
-    init(){
-        let randNum = Int(arc4random_uniform(4))
-        switch randNum{
-        case 0: self = .Yellow
-        case 1: self = .Blue
-        case 2: self = .Red
-        default: self = .Green
-        }
-    }
-    
-    func getColor() -> String{
-        switch self{
-        case .Yellow: return "Yellow"
-        case .Blue: return "Blue"
-        case .Red: return "Red"
-        case .Green: return "Green"
-        }
-    }
-}
+import AudioToolbox
+import AVFoundation
 
 class TwoByTwoViewController: UIViewController {
     
+    enum Color { // 4 colors for the uiviews
+        case Yellow
+        case Blue
+        case Red
+        case Green
+        
+        init(){
+            let randNum = Int(arc4random_uniform(4))
+            switch randNum{
+            case 0: self = .Yellow
+            case 1: self = .Blue
+            case 2: self = .Red
+            default: self = .Green
+            }
+        }
+        
+        func getColor() -> String{
+            switch self{
+            case .Yellow: return "Yellow"
+            case .Blue: return "Blue"
+            case .Red: return "Red"
+            case .Green: return "Green"
+            }
+        }
+    }
+    
     @IBOutlet var squareViews: [UIView]!
-    @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var highScoreLabel: UILabel!
+    @IBOutlet weak var incorrectLabel: UILabel!
     
     var scoreCount: Int = 0
     var highScoreCount: Int = 0
@@ -53,16 +55,24 @@ class TwoByTwoViewController: UIViewController {
     var tappedSquare: UIView = UIView()
     var currentSquare: Int = 0
     
-    var tapRecognizer0: UITapGestureRecognizer = UITapGestureRecognizer()
-    var tapRecognizer1: UITapGestureRecognizer = UITapGestureRecognizer()
-    var tapRecognizer2: UITapGestureRecognizer = UITapGestureRecognizer()
-    var tapRecognizer3: UITapGestureRecognizer = UITapGestureRecognizer()
+    var audioPlayer: AVAudioPlayer = AVAudioPlayer()
+    var yellowSound: NSURL = NSURL()
+    var blueSound: NSURL = NSURL()
+    var redSound: NSURL = NSURL()
+    var greenSound: NSURL = NSURL()
     
     let defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.sharedApplication().statusBarStyle = .LightContent
+        
+        self.yellowSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("294sound", ofType: "m4a")!)
+        self.blueSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("285sound", ofType: "m4a")!)
+        self.redSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("270sound", ofType: "m4a")!)
+        self.greenSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("246sound", ofType: "m4a")!)
+        
+        incorrectLabel.hidden = true
         scoreLabel.text = "Score: \(scoreCount)"
         if defaults.valueForKey("highScore") != nil{
             highScoreCount = defaults.valueForKey("highScore") as! Int
@@ -70,21 +80,13 @@ class TwoByTwoViewController: UIViewController {
             highScoreCount = 0
         }
         highScoreLabel.text = "High Score: \(highScoreCount)"
-        tapRecognizer0 = UITapGestureRecognizer(target: self, action: #selector(TwoByTwoViewController.squareTappedByUser(_:)))
-        tapRecognizer1 = UITapGestureRecognizer(target: self, action: #selector(TwoByTwoViewController.squareTappedByUser(_:)))
-        tapRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(TwoByTwoViewController.squareTappedByUser(_:)))
-        tapRecognizer3 = UITapGestureRecognizer(target: self, action: #selector(TwoByTwoViewController.squareTappedByUser(_:)))
-        squareViews[0].addGestureRecognizer(tapRecognizer0)
-        squareViews[1].addGestureRecognizer(tapRecognizer1)
-        squareViews[2].addGestureRecognizer(tapRecognizer2)
-        squareViews[3].addGestureRecognizer(tapRecognizer3)
         for square in squareViews{
             square.layer.cornerRadius = 10
             square.clipsToBounds = true
-            square.userInteractionEnabled = false
+            let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(TwoByTwoViewController.squareTappedByUser(_:)))
+            square.addGestureRecognizer(tapRecognizer)
         }
-        resetButton.layer.cornerRadius = 7
-        resetButton.clipsToBounds = true
+        self.disableGestureRecognizers()
         finishButton.layer.cornerRadius = 7
         finishButton.clipsToBounds = true
         self.addToAIPattern()
@@ -100,16 +102,14 @@ class TwoByTwoViewController: UIViewController {
         usersPattern.append(color)
         if usersPattern[usersPattern.count-1] != currentPattern[usersPattern.count-1]{
             usersPattern.removeAll()
-            for square in squareViews{
-                square.userInteractionEnabled = false
-            }
+            self.disableGestureRecognizers()
+            self.vibrateDevice()
+            incorrectLabel.hidden = false
             self.reset()
         }else{
             if usersPattern.count == currentPattern.count{
                 usersPattern.removeAll()
-                for square in squareViews{
-                    square.userInteractionEnabled = false
-                }
+                self.disableGestureRecognizers()
                 scoreCount += 1
                 scoreLabel.text = "Score: \(scoreCount)"
                 self.addToAIPattern()
@@ -119,12 +119,12 @@ class TwoByTwoViewController: UIViewController {
     }
     
     func flashSquare(){
+        incorrectLabel.hidden = true
         if currentSquare == currentPattern.count{
             timer.invalidate()
             currentSquare = 0
-            self.setUpGestureRecognizers()
+            self.enableGestureRecognizers()
         }else{
-            //print(currentPattern[currentSquare].getColor())
             switch currentPattern[currentSquare]{
             case .Yellow:
                 squareToLightUp = squareViews[0]
@@ -152,6 +152,7 @@ class TwoByTwoViewController: UIViewController {
     }
     
     func squareTappedByUser(recognizer: UITapGestureRecognizer){
+        self.disableGestureRecognizers()
         tappedSquare = recognizer.view!
         tappedSquare.alpha = 1
         timer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: #selector(TwoByTwoViewController.dimSquare), userInfo: nil, repeats: false)
@@ -167,11 +168,21 @@ class TwoByTwoViewController: UIViewController {
         default: colorToAdd = .Green
         }
         self.addToUsersPattern(colorToAdd)
+        self.enableGestureRecognizers()
+        if usersPattern.count != currentPattern.count{
+            self.enableGestureRecognizers()
+        }
     }
     
-    func setUpGestureRecognizers(){
+    func enableGestureRecognizers(){
         for square in squareViews{
             square.userInteractionEnabled = true
+        }
+    }
+    
+    func disableGestureRecognizers(){
+        for square in squareViews{
+            square.userInteractionEnabled = false
         }
     }
     
@@ -192,8 +203,8 @@ class TwoByTwoViewController: UIViewController {
         self.setUpTimer()
     }
     
-    @IBAction func resetButtonTapped(sender: UIButton) {
-        self.reset()
+    func vibrateDevice(){
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
     }
     
     @IBAction func finishButtonTapped(sender: UIButton) {

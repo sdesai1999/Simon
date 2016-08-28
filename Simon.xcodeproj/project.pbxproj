@@ -17,7 +17,6 @@
 		852DEC0B1D62DC00004AAB7E /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852DEC0A1D62DC00004AAB7E /* InstructionViewController.swift */; };
 		852DEC111D62E443004AAB7E /* TwoByTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852DEC101D62E443004AAB7E /* TwoByTwoViewController.swift */; };
 		852DEC131D62E450004AAB7E /* ThreeByThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852DEC121D62E450004AAB7E /* ThreeByThreeViewController.swift */; };
-		852DEC151D62E477004AAB7E /* FourByFourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852DEC141D62E477004AAB7E /* FourByFourViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +53,10 @@
 		852DEC0A1D62DC00004AAB7E /* InstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
 		852DEC101D62E443004AAB7E /* TwoByTwoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoByTwoViewController.swift; sourceTree = "<group>"; };
 		852DEC121D62E450004AAB7E /* ThreeByThreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeByThreeViewController.swift; sourceTree = "<group>"; };
-		852DEC141D62E477004AAB7E /* FourByFourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourByFourViewController.swift; sourceTree = "<group>"; };
+		85DAB89C1D72B2AB002836F4 /* 294sound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = 294sound.m4a; path = ../../../../Desktop/294sound.m4a; sourceTree = "<group>"; };
+		85DAB89D1D72B2AB002836F4 /* 285sound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = 285sound.m4a; path = ../../../../Desktop/285sound.m4a; sourceTree = "<group>"; };
+		85DAB89E1D72B2AB002836F4 /* 270sound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = 270sound.m4a; path = ../../../../Desktop/270sound.m4a; sourceTree = "<group>"; };
+		85DAB89F1D72B2AB002836F4 /* 246sound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = 246sound.m4a; path = ../../../../Desktop/246sound.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,12 +107,12 @@
 		852DEBDB1D62CBD0004AAB7E /* Simon */ = {
 			isa = PBXGroup;
 			children = (
+				85DAB89B1D72B019002836F4 /* SquareSounds */,
 				852DEBDC1D62CBD0004AAB7E /* AppDelegate.swift */,
 				852DEC0A1D62DC00004AAB7E /* InstructionViewController.swift */,
 				852DEBDE1D62CBD0004AAB7E /* InitialViewController.swift */,
 				852DEC101D62E443004AAB7E /* TwoByTwoViewController.swift */,
 				852DEC121D62E450004AAB7E /* ThreeByThreeViewController.swift */,
-				852DEC141D62E477004AAB7E /* FourByFourViewController.swift */,
 				852DEBE01D62CBD0004AAB7E /* Main.storyboard */,
 				852DEBE31D62CBD0004AAB7E /* Assets.xcassets */,
 				852DEBE51D62CBD0004AAB7E /* LaunchScreen.storyboard */,
@@ -135,6 +137,17 @@
 				852DEBFE1D62CBD0004AAB7E /* Info.plist */,
 			);
 			path = SimonUITests;
+			sourceTree = "<group>";
+		};
+		85DAB89B1D72B019002836F4 /* SquareSounds */ = {
+			isa = PBXGroup;
+			children = (
+				85DAB89C1D72B2AB002836F4 /* 294sound.m4a */,
+				85DAB89D1D72B2AB002836F4 /* 285sound.m4a */,
+				85DAB89E1D72B2AB002836F4 /* 270sound.m4a */,
+				85DAB89F1D72B2AB002836F4 /* 246sound.m4a */,
+			);
+			name = SquareSounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +218,7 @@
 				TargetAttributes = {
 					852DEBD81D62CBD0004AAB7E = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = U6T5LVFU7R;
 					};
 					852DEBEC1D62CBD0004AAB7E = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -271,7 +285,6 @@
 				852DEC0B1D62DC00004AAB7E /* InstructionViewController.swift in Sources */,
 				852DEC131D62E450004AAB7E /* ThreeByThreeViewController.swift in Sources */,
 				852DEC111D62E443004AAB7E /* TwoByTwoViewController.swift in Sources */,
-				852DEC151D62E477004AAB7E /* FourByFourViewController.swift in Sources */,
 				852DEBDF1D62CBD0004AAB7E /* InitialViewController.swift in Sources */,
 				852DEBDD1D62CBD0004AAB7E /* AppDelegate.swift in Sources */,
 			);
@@ -417,8 +430,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Simon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.SauravDesai.Simon;
@@ -432,8 +445,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Simon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.SauravDesai.Simon;
@@ -470,6 +483,7 @@
 		852DEC081D62CBD0004AAB7E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SimonUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.SauravDesai.SimonUITests;
