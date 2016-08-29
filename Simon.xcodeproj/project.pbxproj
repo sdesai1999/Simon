@@ -17,6 +17,7 @@
 		852DEC0B1D62DC00004AAB7E /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852DEC0A1D62DC00004AAB7E /* InstructionViewController.swift */; };
 		852DEC111D62E443004AAB7E /* TwoByTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852DEC101D62E443004AAB7E /* TwoByTwoViewController.swift */; };
 		852DEC131D62E450004AAB7E /* ThreeByThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852DEC121D62E450004AAB7E /* ThreeByThreeViewController.swift */; };
+		85DAB8A31D741137002836F4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DAB8A21D741137002836F4 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		85DAB89D1D72B2AB002836F4 /* 285sound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = 285sound.m4a; path = ../../../../Desktop/285sound.m4a; sourceTree = "<group>"; };
 		85DAB89E1D72B2AB002836F4 /* 270sound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = 270sound.m4a; path = ../../../../Desktop/270sound.m4a; sourceTree = "<group>"; };
 		85DAB89F1D72B2AB002836F4 /* 246sound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = 246sound.m4a; path = ../../../../Desktop/246sound.m4a; sourceTree = "<group>"; };
+		85DAB8A01D72B51B002836F4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		85DAB8A21D741137002836F4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +90,7 @@
 		852DEBD01D62CBD0004AAB7E = {
 			isa = PBXGroup;
 			children = (
+				85DAB8A01D72B51B002836F4 /* AVFoundation.framework */,
 				852DEBDB1D62CBD0004AAB7E /* Simon */,
 				852DEBF01D62CBD0004AAB7E /* SimonTests */,
 				852DEBFB1D62CBD0004AAB7E /* SimonUITests */,
@@ -110,6 +114,7 @@
 				85DAB89B1D72B019002836F4 /* SquareSounds */,
 				852DEBDC1D62CBD0004AAB7E /* AppDelegate.swift */,
 				852DEC0A1D62DC00004AAB7E /* InstructionViewController.swift */,
+				85DAB8A21D741137002836F4 /* SettingsViewController.swift */,
 				852DEBDE1D62CBD0004AAB7E /* InitialViewController.swift */,
 				852DEC101D62E443004AAB7E /* TwoByTwoViewController.swift */,
 				852DEC121D62E450004AAB7E /* ThreeByThreeViewController.swift */,
@@ -287,6 +292,7 @@
 				852DEC111D62E443004AAB7E /* TwoByTwoViewController.swift in Sources */,
 				852DEBDF1D62CBD0004AAB7E /* InitialViewController.swift in Sources */,
 				852DEBDD1D62CBD0004AAB7E /* AppDelegate.swift in Sources */,
+				85DAB8A31D741137002836F4 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

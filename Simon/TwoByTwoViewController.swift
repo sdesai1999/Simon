@@ -55,23 +55,11 @@ class TwoByTwoViewController: UIViewController {
     var tappedSquare: UIView = UIView()
     var currentSquare: Int = 0
     
-    var audioPlayer: AVAudioPlayer = AVAudioPlayer()
-    var yellowSound: NSURL = NSURL()
-    var blueSound: NSURL = NSURL()
-    var redSound: NSURL = NSURL()
-    var greenSound: NSURL = NSURL()
-    
     let defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        
-        self.yellowSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("294sound", ofType: "m4a")!)
-        self.blueSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("285sound", ofType: "m4a")!)
-        self.redSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("270sound", ofType: "m4a")!)
-        self.greenSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("246sound", ofType: "m4a")!)
-        
         incorrectLabel.hidden = true
         scoreLabel.text = "Score: \(scoreCount)"
         if defaults.valueForKey("highScore") != nil{
