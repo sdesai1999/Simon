@@ -8,6 +8,10 @@
 
 import UIKit
 
+let originalColor = UIColor(red: 0.121569, green: 0.129412, blue: 0.141176, alpha: 1)
+var currentBackgroundColor: UIColor = originalColor
+var shapeToUse: String = "rounded square"
+
 class InitialViewController: UIViewController {
 
     @IBOutlet weak var twoByTwoButton: UIButton!
@@ -18,6 +22,7 @@ class InitialViewController: UIViewController {
     override func viewDidLoad(){
         super.viewDidLoad()
         UIApplication.sharedApplication().statusBarStyle = .LightContent
+        self.view.backgroundColor = currentBackgroundColor
         twoByTwoButton.layer.cornerRadius = 20
         twoByTwoButton.clipsToBounds = true
         threeByThreeButton.layer.cornerRadius = 20

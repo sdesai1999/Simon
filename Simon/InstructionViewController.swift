@@ -18,6 +18,7 @@ class InstructionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.sharedApplication().statusBarStyle = .LightContent
+        self.view.backgroundColor = currentBackgroundColor
         backButton.layer.cornerRadius = 7
         backButton.clipsToBounds = true
         instructionString += "This is the classic game of Simon. The goal is to remember "

@@ -14,6 +14,8 @@ class ThreeByThreeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        self.view.backgroundColor = currentBackgroundColor
         finishButton.layer.cornerRadius = 7
         finishButton.clipsToBounds = true
     }

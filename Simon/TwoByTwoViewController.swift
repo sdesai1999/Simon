@@ -60,6 +60,7 @@ class TwoByTwoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.sharedApplication().statusBarStyle = .LightContent
+        self.view.backgroundColor = currentBackgroundColor
         incorrectLabel.hidden = true
         scoreLabel.text = "Score: \(scoreCount)"
         if defaults.valueForKey("highScore") != nil{
