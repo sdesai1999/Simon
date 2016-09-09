@@ -15,7 +15,28 @@ class ThreeByThreeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        self.view.backgroundColor = currentBackgroundColor
+        
+        if defaults.valueForKey("backgroundColor") != nil{
+            currentBackgroundColor = defaults.valueForKey("backgroundColor") as! String
+        }else{
+            currentBackgroundColor = "originalColor"
+        }
+        
+        switch currentBackgroundColor{
+        case "originalColor":
+            self.view.backgroundColor = originalColor
+        case "purple":
+            self.view.backgroundColor = UIColor.purpleColor()
+        default:
+            self.view.backgroundColor = UIColor.brownColor()
+        }
+        
+        if defaults.valueForKey("shape") != nil{
+            shapeToUse = defaults.valueForKey("shape") as! String
+        }else{
+            shapeToUse = "round square"
+        }
+        
         finishButton.layer.cornerRadius = 7
         finishButton.clipsToBounds = true
     }

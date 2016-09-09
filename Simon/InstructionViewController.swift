@@ -18,7 +18,22 @@ class InstructionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        self.view.backgroundColor = currentBackgroundColor
+        
+        if defaults.valueForKey("backgroundColor") != nil{
+            currentBackgroundColor = defaults.valueForKey("backgroundColor") as! String
+        }else{
+            currentBackgroundColor = "originalColor"
+        }
+        
+        switch currentBackgroundColor{
+        case "originalColor":
+            self.view.backgroundColor = originalColor
+        case "purple":
+            self.view.backgroundColor = UIColor.purpleColor()
+        default:
+            self.view.backgroundColor = UIColor.brownColor()
+        }
+        
         backButton.layer.cornerRadius = 7
         backButton.clipsToBounds = true
         instructionString += "This is the classic game of Simon. The goal is to remember "

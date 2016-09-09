@@ -55,12 +55,31 @@ class TwoByTwoViewController: UIViewController {
     var tappedSquare: UIView = UIView()
     var currentSquare: Int = 0
     
-    let defaults = NSUserDefaults.standardUserDefaults()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        self.view.backgroundColor = currentBackgroundColor
+        
+        if defaults.valueForKey("backgroundColor") != nil{
+            currentBackgroundColor = defaults.valueForKey("backgroundColor") as! String
+        }else{
+            currentBackgroundColor = "originalColor"
+        }
+        
+        switch currentBackgroundColor{
+        case "originalColor":
+            self.view.backgroundColor = originalColor
+        case "purple":
+            self.view.backgroundColor = UIColor.purpleColor()
+        default:
+            self.view.backgroundColor = UIColor.brownColor()
+        }
+        
+        if defaults.valueForKey("shape") != nil{
+            shapeToUse = defaults.valueForKey("shape") as! String
+        }else{
+            shapeToUse = "round square"
+        }
+        
         incorrectLabel.hidden = true
         scoreLabel.text = "Score: \(scoreCount)"
         if defaults.valueForKey("highScore") != nil{
@@ -70,8 +89,16 @@ class TwoByTwoViewController: UIViewController {
         }
         highScoreLabel.text = "High Score: \(highScoreCount)"
         for square in squareViews{
-            square.layer.cornerRadius = 10
-            square.clipsToBounds = true
+            switch shapeToUse{
+            case "round square":
+                square.layer.cornerRadius = 10
+                square.clipsToBounds = true
+            case "perfect circle":
+                square.layer.cornerRadius = 0.5 * square.bounds.size.width
+                square.clipsToBounds = true
+            default:
+                break
+            }
             let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(TwoByTwoViewController.squareTappedByUser(_:)))
             square.addGestureRecognizer(tapRecognizer)
         }

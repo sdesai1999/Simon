@@ -23,7 +23,22 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        self.view.backgroundColor = currentBackgroundColor
+        
+        if defaults.valueForKey("backgroundColor") != nil{
+            currentBackgroundColor = defaults.valueForKey("backgroundColor") as! String
+        }else{
+            currentBackgroundColor = "originalColor"
+        }
+        
+        switch currentBackgroundColor{
+        case "originalColor":
+            self.view.backgroundColor = originalColor
+        case "purple":
+            self.view.backgroundColor = UIColor.purpleColor()
+        default:
+            self.view.backgroundColor = UIColor.brownColor()
+        }
+        
         let attr = NSDictionary(object: UIFont(name: "Avenir-Light", size: 13.0)!, forKey: NSFontAttributeName)
         UISegmentedControl.appearance().setTitleTextAttributes(attr as [NSObject : AnyObject], forState: .Normal)
         
@@ -68,11 +83,11 @@ class SettingsViewController: UIViewController {
         perfectCircleView.userInteractionEnabled = true
         
         switch currentBackgroundColor{
-        case originalColor:
+        case "originalColor":
             origBackgroundColorView.layer.borderColor = UIColor.greenColor().CGColor
             purpleBackgroundColorView.layer.borderColor = UIColor.purpleColor().CGColor
             brownBackgroundColorView.layer.borderColor = UIColor.brownColor().CGColor
-        case UIColor.purpleColor():
+        case "purple":
             origBackgroundColorView.layer.borderColor = originalColor.CGColor
             purpleBackgroundColorView.layer.borderColor = UIColor.greenColor().CGColor
             brownBackgroundColorView.layer.borderColor = UIColor.brownColor().CGColor
@@ -88,6 +103,13 @@ class SettingsViewController: UIViewController {
         origBackgroundColorView.addGestureRecognizer(backgroundGestureRecognizer0)
         purpleBackgroundColorView.addGestureRecognizer(backgroundGestureRecognizer1)
         brownBackgroundColorView.addGestureRecognizer(backgroundGestureRecognizer2)
+        
+        let shapeTapRecognizer0 = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.shapeViewTapped(_:)))
+        let shapeTapRecognizer1 = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.shapeViewTapped(_:)))
+        let shapeTapRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.shapeViewTapped(_:)))
+        roundSquareView.addGestureRecognizer(shapeTapRecognizer0)
+        perfectSquareView.addGestureRecognizer(shapeTapRecognizer1)
+        perfectCircleView.addGestureRecognizer(shapeTapRecognizer2)
     }
     
     func backgroundViewTapped(recognizer: UITapGestureRecognizer){
@@ -99,17 +121,41 @@ class SettingsViewController: UIViewController {
         switch tappedSquare{
         case origBackgroundColorView:
             self.view.backgroundColor = originalColor
-            currentBackgroundColor = originalColor
+            currentBackgroundColor = "originalColor"
         case purpleBackgroundColorView:
             self.view.backgroundColor = UIColor.purpleColor()
-            currentBackgroundColor = UIColor.purpleColor()
+            currentBackgroundColor = "purple"
         default:
             self.view.backgroundColor = UIColor.brownColor()
-            currentBackgroundColor = UIColor.brownColor()
+            currentBackgroundColor = "brown"
+        }
+        defaults.setValue(currentBackgroundColor, forKey: "backgroundColor")
+        switch currentBackgroundColor{
+        case "originalColor":
+            self.view.backgroundColor = originalColor
+        case "purple":
+            self.view.backgroundColor = UIColor.purpleColor()
+        default:
+            self.view.backgroundColor = UIColor.brownColor()
         }
     }
     
-    
+    func shapeViewTapped(recognizer: UITapGestureRecognizer){
+        let tappedSquare = recognizer.view!
+        roundSquareView.backgroundColor = UIColor.clearColor()
+        perfectSquareView.backgroundColor = UIColor.clearColor()
+        perfectCircleView.backgroundColor = UIColor.clearColor()
+        tappedSquare.backgroundColor = UIColor.whiteColor()
+        switch tappedSquare{
+        case roundSquareView:
+            shapeToUse = "round square"
+        case perfectSquareView:
+            shapeToUse = "perfect square"
+        default:
+            shapeToUse = "perfect circle"
+        }
+        defaults.setValue(shapeToUse, forKey: "shape")
+    }
 
 }
 

@@ -9,8 +9,10 @@
 import UIKit
 
 let originalColor = UIColor(red: 0.121569, green: 0.129412, blue: 0.141176, alpha: 1)
-var currentBackgroundColor: UIColor = originalColor
-var shapeToUse: String = "rounded square"
+var currentBackgroundColor: String = String()
+var shapeToUse: String = String()
+let defaults = NSUserDefaults.standardUserDefaults()
+
 
 class InitialViewController: UIViewController {
 
@@ -22,7 +24,28 @@ class InitialViewController: UIViewController {
     override func viewDidLoad(){
         super.viewDidLoad()
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        self.view.backgroundColor = currentBackgroundColor
+        
+        if defaults.valueForKey("backgroundColor") != nil{
+            currentBackgroundColor = defaults.valueForKey("backgroundColor") as! String
+        }else{
+            currentBackgroundColor = "originalColor"
+        }
+        
+        switch currentBackgroundColor{
+        case "originalColor":
+            self.view.backgroundColor = originalColor
+        case "purple":
+            self.view.backgroundColor = UIColor.purpleColor()
+        default:
+            self.view.backgroundColor = UIColor.brownColor()
+        }
+        
+        if defaults.valueForKey("shape") != nil{
+            shapeToUse = defaults.valueForKey("shape") as! String
+        }else{
+            shapeToUse = "round square"
+        }
+        
         twoByTwoButton.layer.cornerRadius = 20
         twoByTwoButton.clipsToBounds = true
         threeByThreeButton.layer.cornerRadius = 20
